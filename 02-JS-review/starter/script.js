@@ -4,15 +4,8 @@ const data = [
     title: "The Lord of the Rings",
     publicationDate: "1954-07-29",
     author: "J. R. R. Tolkien",
-    genres: [
-      "fantasy",
-      "high-fantasy",
-      "adventure",
-      "fiction",
-      "novels",
-      "literature",
-    ],
-    hasMovieAdaptation: true,
+    genres: ["fantasy", "high-fantasy", "adventure", "fiction", "novels", "literature"],
+    hasMovieAdaptation: false,
     pages: 1216,
     translations: {
       spanish: "El señor de los anillos",
@@ -37,13 +30,7 @@ const data = [
     title: "The Cyberiad",
     publicationDate: "1965-01-01",
     author: "Stanislaw Lem",
-    genres: [
-      "science fiction",
-      "humor",
-      "speculative fiction",
-      "short stories",
-      "fantasy",
-    ],
+    genres: ["science fiction", "humor", "speculative fiction", "short stories", "fantasy"],
     hasMovieAdaptation: false,
     pages: 295,
     translations: {},
@@ -140,5 +127,157 @@ function getBooks() {
 }
 
 function getBook(id) {
-  return data.find((d) => d.id === id);
+  return data.find(d => d.id === id);
 }
+
+// destructuring
+/*
+const book = getBook(3);
+book;
+const { title, author, pages, publicationDate, genres, hasMovieAdaptation } = book;
+
+console.log(title, author);
+
+// const primaryGenre = genres[0];
+// const secondaryGenre = genres[1];
+
+const [primaryGenre, secondaryGenre, ...othersGenre] = genres;
+
+console.log(primaryGenre, secondaryGenre, othersGenre);
+
+const newGeneres = [...genres, "epic fantasy"];
+
+newGeneres;
+
+const updatedBook = {
+  ...book,
+  //adding new property
+  moviePublicationDate: "2001-12-19",
+
+  //updating property
+  pages: 1255,
+};
+
+updatedBook;
+console.log(updatedBook);
+
+const summary = `${title} is a book ${author} was released in ${publicationDate.split("-")[0]}`;
+
+summary;
+
+console.log(true && "string");
+console.log(false && "string");
+console.log(hasMovieAdaptation && "has a movie");
+
+// falsy value: 0, '', null, undefined
+console.log("jarek" && "some string");
+console.log(0 && "some string");
+
+console.log(true || "some string");
+console.log(false || "some string");
+
+const x1 = null;
+const x2 = 0;
+const x3 = "";
+const x4 = undefined;
+
+console.log(x1 ?? "some text");
+console.log(x2 ?? "some text");
+console.log(x3 ?? "some text");
+console.log(x4 ?? "some text");
+
+console.log(x1 || "some text");
+console.log(x2 || "some text");
+console.log(x3 || "some text");
+console.log(x4 || "some text");
+
+function getTotalReviewCount(book) {
+  const goodread = book.reviews?.goodreads?.reviewsCount ?? 0;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodread + librarything;
+}
+console.log(getTotalReviewCount(book));
+*/
+
+// map, filter reduce, sort
+// function getTotalReviewCount(book) {
+//   const goodread = book.reviews?.goodreads?.reviewsCount ?? 0;
+//   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+//   return goodread + librarything;
+// }
+
+// const books = getBooks();
+
+// const titles = books.map(book => book.title);
+// titles;
+
+// const essentialData = books.map(book => ({
+//   title: book.title,
+//   author: book.author,
+//   reviews: getTotalReviewCount(book),
+// }));
+
+// essentialData;
+
+// const morePages = books.filter(el => el.pages > 500).filter(el => el.hasMovieAdaptation);
+
+// morePages;
+
+// console.log(morePages.length);
+
+// const longBooks = books.filter(el => el.pages > 500 && el.hasMovieAdaptation);
+// console.log(longBooks.length);
+
+// const adventureBooks = books
+//   .filter(book => book.genres.includes("adventure"))
+//   .map(book => book.title);
+
+// adventureBooks;
+
+// const allPages = books.reduce((acc, cur) => acc + cur.pages, 0);
+
+// allPages;
+
+// const arr = [3, 7, 1, 9, 6];
+// const sorted = arr.slice().sort((a, b) => a - b);
+// sorted;
+// arr;
+
+// const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+// sortedByPages;
+
+// //1) add book object to array
+// const newBook = {
+//   id: 6,
+//   title: "Harry potter and chamber",
+//   authos: "J.K. Rowling",
+// };
+
+// const booksAfterAdd = [...books, newBook];
+
+// booksAfterAdd;
+
+// //2) delete books object
+// const booksAfterDelete = booksAfterAdd.filter(book => book.id !== 3);
+// booksAfterDelete;
+
+// // 3) update book object
+// const booksAfterUpdate = booksAfterDelete.map(book =>
+//   book.id === 1 ? { ...book, pages: 1 } : book
+// );
+
+// booksAfterUpdate;
+
+//async js
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then(res => res.json())
+  .then(data => console.log(data));
+
+async function getTodos() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+  return data;
+}
+
+const todos = getTodos();
+todos;
