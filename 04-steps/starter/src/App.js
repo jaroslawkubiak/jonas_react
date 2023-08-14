@@ -5,7 +5,7 @@ const messages = ["Learn React ⚛️", "Apply for jobs 💼", "Invest your new 
 export default function App() {
   return (
     <div>
-      {/* <Steps /> */}
+      <Steps />
       <Counter />
     </div>
   );
