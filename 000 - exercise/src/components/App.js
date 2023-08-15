@@ -1,4 +1,5 @@
 import Accordion from "./Accordion";
+import TipCalc from "./TipCalc";
 import "../index.css";
 
 const faqs = [
@@ -16,11 +17,15 @@ const faqs = [
   },
 ];
 
-
 export default function App() {
   return (
-    <div>
-      <Accordion data={faqs}/>
-    </div>
+    <>
+      <div>
+        {/* <Accordion data={faqs} /> */}
+      </div>
+      <div>
+        <TipCalc />
+      </div>
+    </>
   );
 }
