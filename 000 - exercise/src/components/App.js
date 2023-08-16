@@ -1,6 +1,7 @@
 import Accordion from "./Accordion";
 import TipCalc from "./TipCalc";
 import TextExpander from "./TextExpander";
+import CurrencyConverter from "./CurrencyConverter";
 import "../index.css";
 
 const faqs = [
@@ -26,7 +27,7 @@ export default function App() {
         <TipCalc />
       </div> */}
 
-      <div>
+      {/* <div>
         <TextExpander>
           Space travel is the ultimate adventure! Imagine soaring past the stars and exploring new
           worlds. It's the stuff of dreams and science fiction, but believe it or not, space travel
@@ -51,7 +52,9 @@ export default function App() {
           future generations to keep reaching for the stars. Space travel is a pretty cool thing to
           think about. Who knows what we'll discover next!
         </TextExpander>
-      </div>
+      </div> */}
+
+      <CurrencyConverter />
     </>
   );
 }
