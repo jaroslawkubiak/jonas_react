@@ -1,4 +1,23 @@
+import { useEffect, useRef } from "react";
+import { useKey } from "./hooks/useKey";
+
 export function Search({ query, setQuery }) {
+  const inputEl = useRef(null);
+
+  useKey("enter", function () {
+    if (document.activeElement === inputEl.current) return;
+    inputEl.current.focus();
+    setQuery("");
+  });
+
+  // focusing on input field at page first load
+  useEffect(
+    function () {
+      inputEl.current.focus();
+    },
+    [setQuery]
+  );
+
   return (
     <input
       className="search"
@@ -6,6 +25,7 @@ export function Search({ query, setQuery }) {
       placeholder="Search movies..."
       value={query}
       onChange={e => setQuery(e.target.value)}
+      ref={inputEl}
     />
   );
 }
