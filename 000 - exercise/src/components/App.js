@@ -3,6 +3,7 @@ import TipCalc from "./TipCalc";
 import TextExpander from "./TextExpander";
 import CurrencyConverter from "./CurrencyConverter";
 import "../index.css";
+import Geolocation from "./Geolocation";
 
 const faqs = [
   {
@@ -54,7 +55,8 @@ export default function App() {
         </TextExpander>
       </div> */}
 
-      <CurrencyConverter />
+      {/* <CurrencyConverter /> */}
+      <Geolocation />
     </>
   );
 }
